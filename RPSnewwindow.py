@@ -2,124 +2,22 @@ from tkinter import *
 from PIL import Image,ImageTk
 from random import randint
 
-#gui window suru kari
+#GUI window started 
 window=Tk()
 window.title("Rock Paper & Scissor")
 window.configure(background="cornflowerblue")
 
-#photo insert kare
-imgrockcomp=ImageTk.PhotoImage(Image.open("rockcomp.png"))
-imgpapercomp=ImageTk.PhotoImage(Image.open("papercomp.png"))
-imgscicomp=ImageTk.PhotoImage(Image.open("scicomp.png"))
+#Photo assigned for futher usage
+comp_rock_img=ImageTk.PhotoImage(Image.open("rockcomp.png"))
+comp_paper_img=ImageTk.PhotoImage(Image.open("papercomp.png"))
+comp_sci_img=ImageTk.PhotoImage(Image.open("scicomp.png"))
 
-imgrockuser=ImageTk.PhotoImage(Image.open("rockuser.png"))
-imgpaperuser=ImageTk.PhotoImage(Image.open("paperuser.png"))
-imgsciuser=ImageTk.PhotoImage(Image.open("sciuser.png"))
-
-#comp and user ke niche dispaly hone wali photos initial photos 
-labeluser=Label(window,image=imgsciuser)
-labelcomp=Label(window,image=imgscicomp)
-labelcomp.grid(row=1,column=0)
-labeluser.grid(row=1,column=4)
+user_rock_img=ImageTk.PhotoImage(Image.open("rockuser.png"))
+user_paper_img=ImageTk.PhotoImage(Image.open("paperuser.png"))
+user_sci_img=ImageTk.PhotoImage(Image.open("sciuser.png"))
 
 
-def resetgame():
-    final=int(compscore['text'])
-    final=0   #score inc hota rahega
-    compscore["text"]=str(final)
-
-    final=int(userscore['text'])
-    final=0   #score inc hota rahega
-    userscore["text"]=str(final)
-
-    msgupdation("")
-    
-
-#score window banaye hai 
-
-compscore=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="cornflowerblue")
-userscore=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="cornflowerblue")
-compscore.grid(row=1,column=1)
-userscore.grid(row=1,column=3)
-
-#function for the updation of the message that will be coming at last
-def msgupdation(a):
-    result['text']=a
-
-#fuction for updating the comp & user score 
-def compupdate():
-    final=int(compscore['text'])
-    final+=1   #score inc hota rahega
-    compscore["text"]=str(final)
-
-
-def userupdate():
-    final=int(userscore['text'])
-    final+=1   #score inc hota rahega
-    userscore["text"]=str(final)
-
-#function for winner checking
-def winner_check(u,c):
-    if u == c:
-        msgupdation("It's a TIE :)")
-    elif u == "rock":
-        if c == "paper":
-            msgupdation("YOU LOSE!")
-            compupdate()
-        else:
-            msgupdation("YOU WIN !!")
-            userupdate()
-    
-    elif u == "paper":
-        if c == "scissor":
-            msgupdation("YOU LOSE!")
-            compupdate()
-        else:
-            msgupdation("YOU WIN !!")
-            userupdate()
-    
-    elif u == "scissor":
-        if c == "rock":
-            msgupdation("YOU LOSE!")
-            compupdate()
-        else:
-            msgupdation("YOU WIN !!")
-            userupdate()
-    
-    else:
-        pass
-to_select = ["rock","paper","scissor"]
-
-def choice_update(a):
-    
-   
-
-    choice_comp=to_select[randint(0,2)]
-    if choice_comp == "rock":
-        labelcomp.configure(image=imgrockcomp)
-    elif choice_comp == "paper":
-        labelcomp.configure(image=imgpapercomp)
-    else:
-        labelcomp.configure(image=imgscicomp)
-    
-    if a == "rock":
-        labeluser.configure(image=imgrockuser)
-    elif a == "paper":
-        labeluser.configure(image=imgpaperuser)
-    else:
-        labeluser.configure(image=imgsciuser)
-    
-    winner_check(a,choice_comp)
-
-
-    
-#msg ki kon jeta aur kon hara
-result=Label(window,font=("arial",40,"bold"),bg="red",fg="white")
-result.grid(row=4,column=2)
-
-
-#indicator ki ye comp ki place hai aur ye user ki place hai
-
+#labels to indicate the side of players 
 user_indi=Label(window,font=("arial",40,"bold"),
                 text="PLAYER",bg="orange",fg="blue")
 comp_indi=Label(window,font=("arial",40,"bold"),
@@ -127,6 +25,128 @@ comp_indi=Label(window,font=("arial",40,"bold"),
 comp_indi.grid(row=0,column=1)
 user_indi.grid(row=0,column=3)
 
+
+#Computer and user , initial photos 
+label_user=Label(window,image=user_sci_img)
+label_comp=Label(window,image=comp_sci_img)
+label_comp.grid(row=1,column=0)
+label_user.grid(row=1,column=4)
+
+#initial score window 
+comp_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="cornflowerblue")
+user_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="cornflowerblue")
+comp_score.grid(row=1,column=1)
+user_score.grid(row=1,column=3)
+
+
+#reset button function
+def resetgame():                 
+    final=int(comp_score['text'])
+    final=0   
+    comp_score["text"]=str(final)
+
+    final=int(user_score['text'])
+    final=0   
+    user_score["text"]=str(final)
+
+    label_user=Label(window,image=user_sci_img)
+    label_comp=Label(window,image=comp_sci_img)
+    label_comp.grid(row=1,column=0)
+    label_user.grid(row=1,column=4)
+
+    msg_updation("")
+    
+
+#function for the updation of the message that will be coming at last
+def msg_updation(a):
+    result['text']=a
+
+result=Label(window,text='',font=("arial",40,"bold"),bg="red",fg="white") #text   #message-showing result
+result.grid(row=4,column=2)
+
+
+#Function for updating the computer & user score 
+def comp_update():
+    final=int(comp_score['text'])
+    final+=1                     #increase's computer score
+    comp_score["text"]=str(final)
+
+def user_update():
+    final=int(user_score['text'])
+    final+=1                     #increase's user score 
+    user_score["text"]=str(final)
+
+
+#buttons for user choice input
+rock_button=Button(window,width=16,height=3,text="ROCK",
+                        font=("arial",20,"bold"),bg="yellow",fg="purple",command=lambda:user_choice("rock")).grid(row=3,column=1)
+
+paper_button=Button(window,width=16,height=3,text="PAPER",
+                        font=("arial",20,"bold"),bg="yellow",fg="purple",command=lambda:user_choice("paper")).grid(row=3,column=2)
+
+scissor_button=Button(window,width=16,height=3,text="SCISSOR",
+                        font=("arial",20,"bold"),bg="yellow",fg="purple",command=lambda:user_choice("scissor")).grid(row=3,column=3)
+
+
+#buttons to rest the game to initial state
+reset_button=Button(window,width=16,height=2,text="RESET GAME",font=("arial",16,"bold"),bg="blue",
+                    fg="red",command=resetgame)
+reset_button.grid(row=5,column=2)
+
+
+# function to update image on the basis of choice made
+to_select = ["rock","scissor","paper"]
+def user_choice(a):
+    
+    comp_choice=to_select[randint(0,2)]            # computer choice update
+    if comp_choice == "rock":
+        label_comp.configure(image=comp_rock_img)
+    elif comp_choice == "paper":
+        label_comp.configure(image=comp_paper_img)
+    else:
+        label_comp.configure(image=comp_sci_img)
+    
+    if a == "rock":
+        label_user.configure(image=user_rock_img)
+    elif a == "paper":
+        label_user.configure(image=user_paper_img)
+    else:
+        label_user.configure(image=user_sci_img)
+    
+    winner_check(a,comp_choice)
+
+
+#function for winner checking , msg-updation and score-updation
+def winner_check(u,c):
+    if u == c:
+        msg_updation("It's a TIE :)")
+    
+    elif u == "rock":
+        if c == "paper":
+            msg_updation("YOU LOSE!")
+            comp_update()
+        else:
+            msg_updation("YOU WIN !!")
+            user_update()
+    
+    elif u == "paper":
+        if c == "scissor":
+            msg_updation("YOU LOSE!")
+            comp_update()
+        else:
+            msg_updation("YOU WIN !!")
+            user_update()
+    
+    elif u == "scissor":
+        if c == "rock":
+            msg_updation("YOU LOSE!")
+            comp_update()
+        else:
+            msg_updation("YOU WIN !!")
+            user_update()
+    
+    else:
+        pass
 
 
 # function to open a new window
@@ -158,25 +178,33 @@ btn = Button(window,width=16,height=3,
 btn.grid(row=7,column=2)
 
 
-
-
-
-
-
-buttonrock=Button(window,width=16,height=3,text="ROCK",
-                        font=("arial",20,"bold"),bg="yellow",fg="purple",command=lambda:choice_update("rock")).grid(row=3,column=1)
-
-buttonpaper=Button(window,width=16,height=3,text="PAPER",
-                        font=("arial",20,"bold"),bg="yellow",fg="purple",command=lambda:choice_update("paper")).grid(row=3,column=2)
-
-buttonscissor=Button(window,width=16,height=3,text="SCISSOR",
-                        font=("arial",20,"bold"),bg="yellow",fg="purple",command=lambda:choice_update("scissor")).grid(row=3,column=3)
-
-buttonreset=Button(window,width=16,height=2,text="RESET GAME",font=("arial",16,"bold"),bg="blue",
-                    fg="red",command=resetgame)
-buttonreset.grid(row=5,column=2)
-
-
+# The end of the Program for Rock , Paper & Scissor Game .
 window.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
