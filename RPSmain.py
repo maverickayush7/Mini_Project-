@@ -117,7 +117,7 @@ def user_choice(a):
 
 
 #function for winner checking , msg-updation and score-updation
-def winner_check(u,c):
+def winner_check(u,c):                  #u for user_choice & c for comp_choice
     if u == c:
         msg_updation("It's a TIE :)")
     
