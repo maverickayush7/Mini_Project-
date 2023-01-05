@@ -156,14 +156,14 @@ def openNewWindow():
 	newWindow = Toplevel(window)
 
 	# sets the title of the Toplevel widget
-	newWindow.title("New Window")
+	newWindow.title("Game Result")
 
 	# sets the geometry of toplevel
 	newWindow.geometry("500x500")
 
 	# A Label widget to show in toplevel
 	Label(newWindow,
-		text ="This is a new window").pack()
+		text ="This is the new window ").pack()
 
 
 label = Label(window,
