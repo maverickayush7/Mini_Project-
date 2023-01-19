@@ -179,8 +179,8 @@ def open_game_window():
    
 
 # The end of the Program for Rock , Paper & Scissor Game .
-btn = Button(window1,text ="START GAME :)",fg='blue',bg='crimson',height='2',width='25', command = open_game_window)
-btn.place(x=800,y=130)
+btn = Button(window1,text ="START GAME:)",font=("arial",10,"bold"),fg='black',bg='crimson',height='3',width='12', command = open_game_window)
+btn.place(x=608,y=410)
 
 # window1.mainloop()
 
@@ -214,8 +214,8 @@ Now , Click on START GAME & you are good to go.
 ''',
     font=('aharoni',15))
 	label2.pack()
-btn = Button(window1,text ="HELP",fg='black',bg='yellow',height='1',width='20',command = open_help_window)
-btn.place(x=1100,y=600)
+btn = Button(window1,text ="HELP",font=("arial",10,"bold"),fg='black',bg='yellow',height='1',width='10',command = open_help_window)
+btn.place(x=1160,y=65)
 
 
 
@@ -232,8 +232,8 @@ def open_credits_window():
     C.LOHITH REDDY
 ''',font=('aharoni',35))
 	label2.pack()
-btn = Button(window1,text ="CREDITS",fg='black',bg='yellow',height='1',width='20',command = open_credits_window)
-btn.place(x=25,y=600)
+btn = Button(window1,text ="CREDITS",font=("arial",10,"bold"),fg='black',bg='yellow',height='1',width='10',command = open_credits_window)
+btn.place(x=35,y=60)
 
 
 # mainloop()
