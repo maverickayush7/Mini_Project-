@@ -44,9 +44,9 @@ def open_game_window():
 
 #labels to indicate the side of players 
     user_indi=Label(window,font=("arial",40,"bold"),
-                    text="PLAYER",bg="orange",fg="blue")
+                    text="PLAYER",bg="darkorange",fg="blue")
     comp_indi=Label(window,font=("arial",40,"bold"),
-                    text="SYSTEM",bg="orange",fg="blue")
+                    text="SYSTEM",bg="darkorange",fg="blue")
     comp_indi.grid(row=0,column=1)
     user_indi.grid(row=0,column=3)
 
@@ -58,8 +58,8 @@ def open_game_window():
     label_user.grid(row=1,column=4)
 
 #initial score window 
-    comp_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="orange")
-    user_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="orange")
+    comp_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="darkorange")
+    user_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="darkorange")
     comp_score.grid(row=1,column=1)
     user_score.grid(row=1,column=3)
 
@@ -118,7 +118,7 @@ def open_game_window():
 
 #buttons to rest the game to initial state
     reset_button=Button(window,width=16,height=2,text="RESET GAME",font=("arial",16,"bold"),bg="cornflowerblue",
-                        fg="red",command=resetgame)
+                        fg="darkred",command=resetgame)
     reset_button.grid(row=5,column=2)
 
 
@@ -179,7 +179,7 @@ def open_game_window():
    
 
 # The end of the Program for Rock , Paper & Scissor Game .
-btn = Button(window1,text ="START GAME:)",font=("arial",10,"bold"),fg='black',bg='crimson',height='3',width='12', command = open_game_window)
+btn = Button(window1,text ="START GAME:)",font=("arial",10,"bold"),fg='black',bg='orangered',height='3',width='12', command = open_game_window)
 btn.place(x=608,y=410)
 
 # window1.mainloop()
