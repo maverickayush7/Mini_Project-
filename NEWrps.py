@@ -8,21 +8,22 @@ window1.title("Rock Paper & Scissor")
 c=Canvas(window1,bg="gray16",height=2000,width=2000)
 filename=ImageTk.PhotoImage(Image.open("rps_wallpaper.jpg"))
 background_label=Label(window1,image=filename)
-background_label.place(x=12,y=12,relwidth=1,relheight=1)
-c.place(x=10,y=20)
+background_label.place(x=0,y=0)
+#c.place(x=10,y=20)
 
 
 
 def open_game_window():
     
     
-    # import tkinter as Tk
+    # import tkinter as Tk 
     # from PIL import Image,ImageTk
     # from random import randint
 
 #GUI window started   
     window = Toplevel(window1)
     # window=Tk()
+    window.geometry("1275x1275")
     window.title("Rock Paper & Scissor")
     window.configure(background="cornflowerblue")
 
@@ -186,7 +187,22 @@ def open_help_window():
 	newWindow.title("HELP")
 	newWindow.geometry("1275x1275")
 	Label(newWindow,text ="How To Play",font=('Agency FB bold', 30),fg='blue').pack()
-	label2=Label(newWindow,text=''' describe here ''',font=('aharoni',15))
+	label2=Label(newWindow,text='''"Rock, Paper, Scissors" is a simple game that can be played with two players.
+Each player chooses one of three options: rock, paper, or scissors.
+The rules of the game are as follows:
+
+Rock beats Scissors (rock crushes scissors)
+Scissors beat Paper (scissors cut paper)
+Paper beats Rock (paper covers rock)
+If both players choose the same option, the game is a tie.
+
+The GUI for this game could include buttons or images for each of the three options (rock, paper, scissors) that the player can click on to make their choice.
+The GUI should also display the result of the game (win, lose, or tie) after the player has made their choice and the computer or other player has made theirs.
+
+Additionally, you may want to add a score board, where the players can see how many times they won, lost.
+
+Also, you can add an animation or sound effect when the game is won or lost.''',
+    font=('aharoni',15))
 	label2.place(x=5,y=100)
 btn = Button(window1,text ="HELP",fg='yellow',bg='black',height='1',width='20',command = open_help_window)
 btn.place(x=1100,y=600)
@@ -199,11 +215,7 @@ def open_credits_window():
 	newWindow.title("CREDITS")
 	newWindow.geometry("1275x1275")
 	Label(newWindow,text ="TEAM MEMBERS",font=('Agency FB bold', 30),fg='blue').pack()
-	label2=Label(newWindow,text='''
-AYUSH KUMAR
-ATHRAV GANESH
-ANJANI
-LOHITH
+	label2=Label(newWindow,text='''AYUSH KUMAR \n ATHARV GANESH KATYARMAL \n C.SRI LAKSHMI ANJANI \n C.LOHITH REDDY
 ''',font=('aharoni',35))
 	label2.place(x=400,y=100)
 btn = Button(window1,text ="CREDITS",fg='yellow',bg='black',height='1',width='20',command = open_credits_window)
