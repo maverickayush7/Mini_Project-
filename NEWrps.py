@@ -25,7 +25,12 @@ def open_game_window():
     # window=Tk()
     window.geometry("1275x1275")
     window.title("Rock Paper & Scissor")
-    window.configure(background="cornflowerblue")
+    # window.configure(background="cornflowerblue")
+    
+    d=Canvas(window,bg="gray16",height=2000,width=2000)
+    filename=ImageTk.PhotoImage(Image.open("rps_wallpaper22.jpg"))
+    background_label=Label(window,image=filename)
+    background_label.place(x=0,y=0)
 
 #Photo assigned for futher usage
     comp_rock_img=ImageTk.PhotoImage(Image.open("rockcomp.png"))
@@ -53,8 +58,8 @@ def open_game_window():
     label_user.grid(row=1,column=4)
 
 #initial score window 
-    comp_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="cornflowerblue")
-    user_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="cornflowerblue")
+    comp_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="orange")
+    user_score=Label(window,text=0,font=('arial',60,"bold"),fg="red",bg="orange")
     comp_score.grid(row=1,column=1)
     user_score.grid(row=1,column=3)
 
@@ -112,7 +117,7 @@ def open_game_window():
     scissor_button.grid(row=3,column=3)
 
 #buttons to rest the game to initial state
-    reset_button=Button(window,width=16,height=2,text="RESET GAME",font=("arial",16,"bold"),bg="blue",
+    reset_button=Button(window,width=16,height=2,text="RESET GAME",font=("arial",16,"bold"),bg="cornflowerblue",
                         fg="red",command=resetgame)
     reset_button.grid(row=5,column=2)
 
@@ -174,7 +179,7 @@ def open_game_window():
    
 
 # The end of the Program for Rock , Paper & Scissor Game .
-btn = Button(window1,text ="START GAME",fg='blue',bg='red',height='2',width='20', command = open_game_window)
+btn = Button(window1,text ="START GAME :)",fg='blue',bg='crimson',height='2',width='25', command = open_game_window)
 btn.place(x=800,y=130)
 
 # window1.mainloop()
@@ -192,19 +197,24 @@ Each player chooses one of three options: rock, paper, or scissors.
 The rules of the game are as follows:
 
 Rock beats Scissors (rock crushes scissors)
-Scissors beat Paper (scissors cut paper)
+Scissors beats Paper (scissors cut paper)
 Paper beats Rock (paper covers rock)
 If both players choose the same option, the game is a tie.
 
-The GUI for this game could include buttons or images for each of the three options (rock, paper, scissors) that the player can click on to make their choice.
-The GUI should also display the result of the game (win, lose, or tie) after the player has made their choice and the computer or other player has made theirs.
+The GUI for this game include buttons for each of the three options (rock, paper, scissors) that the player can click on to make their choice.
+The GUI displays the result of the game (win, lose, or tie) after the player has made their choice and the computer has made its.
+The GUI displays a score board, where the players can see how many times he/she won & computer won.
 
-Additionally, you may want to add a score board, where the players can see how many times they won, lost.
+Additionally, you have RESET GAME button , with which player can restart the game.
 
-Also, you can add an animation or sound effect when the game is won or lost.''',
+
+Now , Click on START GAME & you are good to go.
+
+
+''',
     font=('aharoni',15))
-	label2.place(x=5,y=100)
-btn = Button(window1,text ="HELP",fg='yellow',bg='black',height='1',width='20',command = open_help_window)
+	label2.pack()
+btn = Button(window1,text ="HELP",fg='black',bg='yellow',height='1',width='20',command = open_help_window)
 btn.place(x=1100,y=600)
 
 
@@ -215,10 +225,14 @@ def open_credits_window():
 	newWindow.title("CREDITS")
 	newWindow.geometry("1275x1275")
 	Label(newWindow,text ="TEAM MEMBERS",font=('Agency FB bold', 30),fg='blue').pack()
-	label2=Label(newWindow,text='''AYUSH KUMAR \n ATHARV GANESH KATYARMAL \n C.SRI LAKSHMI ANJANI \n C.LOHITH REDDY
+	label2=Label(newWindow,text='''
+    AYUSH KUMAR\n
+    ATHARV GANESH KATYARMAL\n
+    C.SRI LAKSHMI ANJANI\n
+    C.LOHITH REDDY
 ''',font=('aharoni',35))
-	label2.place(x=400,y=100)
-btn = Button(window1,text ="CREDITS",fg='yellow',bg='black',height='1',width='20',command = open_credits_window)
+	label2.pack()
+btn = Button(window1,text ="CREDITS",fg='black',bg='yellow',height='1',width='20',command = open_credits_window)
 btn.place(x=25,y=600)
 
 
